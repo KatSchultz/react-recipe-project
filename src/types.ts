@@ -1,3 +1,4 @@
 export interface Recipe {
-	vegetarian: boolean;
+  title: string;
+  vegetarian: boolean;
 }

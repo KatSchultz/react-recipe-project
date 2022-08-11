@@ -6,29 +6,30 @@ import RecipeDisplay from "./components/RecipeDisplay";
 import { fetchAllRecipes } from "./services/recipes.services";
 import { useEffect, useState } from "react";
 import SearchCriteriaForm from "./components/SearchCriteriaForm";
+import RecipeResults from "./components/RecipeResults";
 
 function App() {
-	const [recipe, setRecipes] = useState();
+  const [recipe, setRecipes] = useState();
 
-	useEffect(() => {
-		getRandomRecipe();
-	}, []);
+  useEffect(() => {
+    getRandomRecipe();
+  }, []);
 
-	function getRandomRecipe() {
-		fetchAllRecipes().then((response) => console.log(response.data));
-	}
+  function getRandomRecipe() {
+    fetchAllRecipes().then((response) => console.log(response.data));
+  }
 
-	return (
-		<div className="App">
-			<Header />
-			<SearchCriteriaForm />
+  return (
+    <div className="App">
+      <Header />
+      <SearchCriteriaForm />
 
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/recipe" element={<RecipeDisplay />} />
-			</Routes>
-		</div>
-	);
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipe" element={<RecipeResults />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

@@ -7,7 +7,7 @@ export default function SearchCriteriaForm() {
 	const [active, setActive] = useState(false);
 
 	function handleCheckboxChange(e: React.ChangeEvent<HTMLInputElement>) {
-		console.log(active);
+		setActive(e.target.checked);
 	}
 
 	return (
@@ -19,7 +19,7 @@ export default function SearchCriteriaForm() {
 					name="vegetarian"
 					id="vegetarian"
 					checked={active}
-					onChange={(e) => setActive(e.target.checked)}
+					onChange={handleCheckboxChange}
 				/>
 				<button type="submit">Enter</button>
 			</form>

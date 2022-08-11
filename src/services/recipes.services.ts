@@ -1,10 +1,21 @@
 import axios from "axios";
 import { config } from "../config";
+import { Recipe, Recipes } from "../types";
 
-export function fetchAllRecipes() {
+export function fetchRandomRecipes() {
   return axios
-    .get(`https://api.spoonacular.com/recipes/search?apiKey=${config.apiKey}`)
-    .then((response) => response);
+    .get<Recipes[]>(`https://api.spoonacular.com/recipes/complexSearch?sort=random&apiKey=${config.apiKey}`)
+    .then((response) => response.data);
 }
 
-// https://api.spoonacular.com/recipes/716429/information?apiKey=YOUR-API-KEY&includeNutrition=true
+export function fetchVegetarianRecipes() {
+    return axios
+        .get(`https://api.spoonacular.com/recipes/complexSearch?diet=Vegetarian&apiKey=${config.apiKey}`)
+        .then((response) => response.data)
+}
+
+export function fetchRecipeById(id: string) {
+    return axios
+        .get<Recipe>(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${config.apiKey}`)
+        .then((response) => response.data)
+}

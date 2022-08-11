@@ -3,9 +3,10 @@ import { Recipe } from "../types";
 
 export default function SearchCriteriaForm() {
   const [recipes, setRecipes] = useState<Recipe[]>([
-    { title: "", vegetarian: false },
+    { id: 0, title: "", vegetarian: false },
   ]);
   const [recipe, setRecipe] = useState<Recipe>({
+    id: 0,
     title: "",
     vegetarian: false,
   });
